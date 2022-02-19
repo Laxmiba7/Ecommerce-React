@@ -1,19 +1,33 @@
-import axios from 'axios'
+// import axios from 'axios'
 import React from 'react'
+import {AiOutlineMinus, AiOutlinePlus} from 'react-icons/ai'
 
 
 
 
-const ItemCard = () => {
+const ItemCard = (props) => {
+    const {name, price, stock, image} = props;
     
   return (
-      <div className="card m-2  " style={{width: "18rem"}}>
-                <img src="..." className="card-img-top" alt="..." />
-                <div className="card-body">
-                    <h5 className="card-title">Dell Latitude 3420</h5>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <div className='col-3'>
+      <div className="card p-1 mt-2" >
+                <img src= {`https://electronic-ecommerce.herokuapp.com/${image}`} className="card-img-top img-fluid" alt="..." />
+                <div className='add-minus-quantity d-flex justify-content-end'>
+                  <AiOutlineMinus />
+                  <input type="text"></input>
+                  <AiOutlinePlus />
+                </div>
+                
+        <div className="card-body">
+                    <h5 className="card-title">{name}</h5>
+                    <div className='d-flex justify-content-between'>
+                        <p>{price}</p>
+                        <p>Stocks Left: {stock}</p>
+                    </div>
+                    <p className="card-text">Released Date</p>
                     <a href="#" className="btn btn-primary">Add to cart</a>
                 </div>
+      </div>
       </div>
     )
 }
