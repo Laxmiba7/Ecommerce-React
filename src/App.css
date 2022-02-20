@@ -11,3 +11,7 @@
 .navbar-brand img {
   width: 5rem;  
 }
+
+.badge {
+  border-radius: 60%;
+}

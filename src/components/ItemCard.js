@@ -6,17 +6,25 @@ import { useState } from 'react';
 
 
 
+
 const ItemCard = (props) => {
-    const {name, price, stock, image, id} = props;
+    const {name, price, stock, image, id, value, date} = props;
+   
     const [incrementValue, setIncrementValue] = useState(0);
-    // const [decrementValue, setDecrementValue] = useState(incrementValue)
+    let dateObj = new Date(date);
+    let month = dateObj.getMonth()+1 ;
+    let year = dateObj.getFullYear();
+    let day = dateObj.getDate();
+    const result = `${month}/${day}/${year}`
+    console.log(result)
     const increment = () => {
       setIncrementValue(incrementValue + 1);
     }
     const decrement = () => {
       const decrementValue = incrementValue <= 0 ? 0 : setIncrementValue(incrementValue-1);
-      // return decrementValue
+      
     }
+
   return (
       <div className='col-3'>
       <div className="card p-1 mt-2" >
@@ -40,7 +48,7 @@ const ItemCard = (props) => {
                         <p>{price}</p>
                         <p>Stocks Left: {stock}</p>
                     </div>
-                    <p className="card-text">Released Date</p>
+                    <p className="card-text">Released Date: {result}</p>
                     <a href="#" className="btn btn-primary">Add to cart</a>
                 </div>
       </div>

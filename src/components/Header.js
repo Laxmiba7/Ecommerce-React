@@ -19,6 +19,7 @@ const Header = () => {
         <a className="nav-link" href="#">
             <AiOutlineShoppingCart />
             </a>
+            <span className="badge ">2</span>
         <a className="nav-link" href="#">
             <CgProfile />
         </a>
