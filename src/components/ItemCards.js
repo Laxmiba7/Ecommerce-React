@@ -15,16 +15,19 @@ const ItemCards = () => {
    
      useEffect(()=> {fetchData()},[])
      console.log(data)
-   
+
+     
   return (
     <div className='p-5'>
         <div className='d-flex justify-content-between mb-3' >
             <h5>Products</h5>
             <button><AiTwotoneFilter/> &nbsp;Filter</button>
         </div>
+        
+        
         <div className='row'>
             
-            {data.map((data) =>  <ItemCard key= {data.id} name= {data.name} price= {data.price} stock= {data.stock} image={data.image}/> )}
+            {data.map((data) =>  <ItemCard key= {data.id} id={data.id} name= {data.name} price= {data.price} stock= {data.stock} image={data.image}/> )}
             
             
         </div>
