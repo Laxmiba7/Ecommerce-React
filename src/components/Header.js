@@ -2,8 +2,12 @@ import React from 'react'
 import logo from "../images/logo.png"
 import {AiOutlineShoppingCart} from 'react-icons/ai'
 import {CgProfile} from 'react-icons/cg'
+import Cart from './Cart'
 
-const Header = () => {
+
+const Header = (props) => {
+ const {cartValues, cartItems, value} = props
+ // console.log(cartItems)
   return (
  <nav className="navbar navbar-expand-lg">
   <div className="container-fluid">
@@ -16,10 +20,12 @@ const Header = () => {
     <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
       <div className="navbar-nav me-5">
         <a className="nav-link active" aria-current="page" href="#">Home</a>
-        <a className="nav-link" href="#">
-            <AiOutlineShoppingCart />
-            </a>
-            <span className="badge ">2</span>
+        <button type="button" className="btn text-white position-relative">
+        
+        <Cart value={value} cartItems={cartItems}/> 
+        
+        </button>
+        
         <a className="nav-link" href="#">
             <CgProfile />
         </a>

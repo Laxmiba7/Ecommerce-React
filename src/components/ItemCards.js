@@ -5,16 +5,22 @@ import axios from 'axios'
 import { useState } from 'react'
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import Cart from './Cart'
 
 
-const ItemCards = () => {
-    const [show, setShow] = useState(false);
+const ItemCards = (props) => {
+  const {cartValues, setCartValues, appId, setAppId, cartItems, setCartItems} =props;
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [cartValue, setCartValue] = useState(0);
+  const value = (val) => {
+     
+    setCartValue(val + cartValue)
+    //setCartValues(val + cartValues);
+}
 
-//   const value = () => {
-//       incrementValue
-//   }
+  
     const [data, setData] = useState([])
     const fetchData = async() => {
         const res = await axios.get('https://electronic-ecommerce.herokuapp.com/api/v1/product');
@@ -25,7 +31,42 @@ const ItemCards = () => {
      useEffect(()=> {fetchData()},[])
      
 
-     
+    const onAdd = (id) => {
+        
+       const cartData = data.find(x => x.id === id); 
+      // console.log(cartData)
+       if(cartData) {
+    //        setCartItems(
+    //          cartItems.map((x) => 
+    //          x.id === cartData.id ? {...cartData, qty: cartData.qty+1 }: x
+    //         )
+    //        );
+    //    }else {
+        setCartItems([...cartItems,{...cartData}])
+       }
+      
+      
+      
+    //    const exist = cartItems.find(x => x.id === id);
+    //    console.log(exist)
+      
+        // if(id === data.id) {
+        //     setCartItems([...cartItems, data ])
+        // }
+        // const exist = cartItems.find(x => x.id === data.id);
+		// console.log(exist)
+		// if(exist) {
+		// 	setCartItems(cartItems.map(x => x.id === data.id ? {...exist , qty: exist.qty+1 } : x))
+		// }
+		// else {
+			
+			
+		// 	 setCartItems([...cartItems, ])
+		// }
+
+    } 
+ //console.log(cartItems)
+    
   return (
     <div className='p-5'>
         <div className='d-flex justify-content-between mb-3' >
@@ -100,7 +141,7 @@ const ItemCards = () => {
         
         <div className='row'>
             
-            {data.map((data) =>  <ItemCard  key= {data.id} date = {data.createDate} id={data.id} name= {data.name} price= {data.price} stock= {data.stock} image={data.image}/> )}
+            {data.map((data) =>  <ItemCard  key= {data.id} value={value} onAdd={() => onAdd(data.id)} value={value} date = {data.createDate} id={data.id} name= {data.name} price= {data.price} stock= {data.stock} image={data.image}/> )}
             
             
         </div>
