@@ -8,7 +8,7 @@ import logo2 from './../images/logo.png'
 
 
 const Cart = (props) => {
-  const {cartItems,value, itemName, itemPrice, itemStock, cartValues} = props;
+  const {cartItems, cartValues} = props;
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -39,7 +39,7 @@ const Cart = (props) => {
                 <div className="col-5">
                   
                   <img
-                    src={i.image}
+                    src={`https://electronic-ecommerce.herokuapp.com/${i.image}`}
                     alt="ItemsAdded"
                     className="img-fluid"
                     style={{}}

@@ -31,8 +31,8 @@ const ItemCard = (props) => {
   return (
       <div className='col-3'>
       <div className="card p-1 mt-2" >
-        <div style={{height:"500px"}}>
-                <img src= {`https://electronic-ecommerce.herokuapp.com/${image}`} className="card-img-top img-fluid" alt="..." />
+        <div style={{height:"275px"}}>
+                <img src= {`https://electronic-ecommerce.herokuapp.com/${image}`} className="card-img-top img-fluid" alt="..." style={{height:"100%", width: "auto"}}/>
         </div>       
                 
         <div className="card-body">
