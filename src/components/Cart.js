@@ -13,12 +13,6 @@ const Cart = (props) => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  // console.log(itemName)
-  // console.log(itemStock)
-  // console.log(itemPrice)
-  console.log(cartItems)
-  
-  
   return (
   
       <div>
@@ -45,7 +39,7 @@ const Cart = (props) => {
                 <div className="col-5">
                   
                   <img
-                    src={logo2}
+                    src={i.image}
                     alt="ItemsAdded"
                     className="img-fluid"
                     style={{}}

@@ -7,8 +7,7 @@ import Cart from './Cart'
 
 const Header = (props) => {
  const {cartValues, cartItems, value} = props
- // console.log(cartItems)
-  return (
+ return (
  <nav className="navbar navbar-expand-lg">
   <div className="container-fluid">
      <a className="navbar-brand ms-5" href="#"> 
