@@ -7,18 +7,19 @@ import { useState, useEffect } from "react";
 import axios from 'axios'
 import { CgArrowTopLeftO } from "react-icons/cg";
 function App() {
-	const [cartValues, setCartValues] = useState(0);
+	const [cartValues, setCartValues] = useState([]);
 	const [cartItems, setCartItems] = useState([]);
 //	const [apiData, setApiData] = useState([]);
 //	const [appId, setAppId] = useState(0)
    // console.log(apiData)
 
    // console.log(cartItems);
+   
   
 	
 	return (
 		<div>
-		  <Header  cartItems = {cartItems}/>
+		  <Header  cartItems = {cartItems} cartValues={cartValues}/>
 		  <ItemCards cartItems = {cartItems} setCartItems= {setCartItems}  cartValues= {cartValues} setCartValues={setCartValues} />
 		 
 		 

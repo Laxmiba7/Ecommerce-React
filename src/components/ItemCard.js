@@ -12,6 +12,7 @@ const ItemCard = (props) => {
     const [disable, setDisable] = React.useState(false);
     const [incrementValue, setIncrementValue] = useState(0);
     const[idVal, setIdVal] = useState('');
+    const [dis,setDis]=useState(false);
     //Convert timestamp to date
     let dateObj = new Date(date);
     let month = dateObj.getMonth() ;
@@ -32,6 +33,7 @@ const ItemCard = (props) => {
     
     //Function for increment value on button click
     const increment = () => {
+      setDis(false)
       incrementValue >= stock ? setDisable(true) : setIncrementValue(incrementValue + 1);
      
     }
@@ -40,13 +42,17 @@ const ItemCard = (props) => {
       const decrementValue = incrementValue <= 0 ? 0 : setIncrementValue(incrementValue-1);
       
     }
-
+    //Function for Add to cart disable on value 0
+    const check = () => {
+     incrementValue === 0 ? setDis(true) : onAdd();
+     value(incrementValue);
+    }
     
    
     
   return (
       <div className='col-3'>
-      <div className="card p-1 mt-2" >
+      <div className="card mb-5" >
         <div style={{height:"275px"}}>
                 <img src= {`https://electronic-ecommerce.herokuapp.com/${image}`} className="card-img-top img-fluid" alt="..." style={{height:"100%", width: "auto"}}/>
         </div>       
@@ -80,7 +86,7 @@ const ItemCard = (props) => {
                         <p>Stocks Left: {stock}</p>
                     </div>
                     <p className="card-text">Released Date: {finalDate}</p>
-                    <button type='submit' className="btn btn-primary" disabled= {disable} data-index={id} onClick={onAdd}>Add to cart</button>
+                    <button type='submit' className="btn btn-primary" disabled= {dis} data-index={id} onClick={()=> check()} >Add to cart</button>
                 </div>
       </div>
       </div>

@@ -13,13 +13,13 @@ const ItemCards = (props) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [cartValue, setCartValue] = useState(0);
+ // const [cartValue, setCartValue] = useState(0);
   const value = (incrementValue) => {
      
-    setCartValue(incrementValue)
-    //setCartValues(val + cartValues);
+    // setCartValue(incrementValue)
+    setCartValues([...cartValues,incrementValue]);
 }
-console.log(cartValue)
+//console.log(cartValue);
 
   
     const [data, setData] = useState([])
@@ -31,8 +31,8 @@ console.log(cartValue)
    
      useEffect(()=> {fetchData()},[])
      
-     console.log(data)
-    const onAdd = (id, name) => {
+     
+    const onAdd = (id) => {
       
        const cartData = data.find(x => x.id === id); 
       //console.log(incrementValue)
@@ -70,7 +70,7 @@ console.log(cartValue)
     
   return (
     <div className='p-5'>
-        <div className='d-flex justify-content-between mb-3' >
+        <div className='d-flex justify-content-between' >
             <h5>Products</h5>
             <Button variant="primary" onClick={handleShow}>
             <AiTwotoneFilter /> Filter

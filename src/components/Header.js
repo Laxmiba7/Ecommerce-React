@@ -21,7 +21,7 @@ const Header = (props) => {
         <a className="nav-link active" aria-current="page" href="#">Home</a>
         <button type="button" className="btn text-white position-relative">
         
-        <Cart value={value} cartItems={cartItems}/> 
+        <Cart value={value} cartItems={cartItems} cartValues={cartValues}/> 
         
         </button>
         
