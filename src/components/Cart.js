@@ -1,16 +1,15 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import logo from './../images/logo.jpg'
 import { useState } from "react";
 import {BsCartPlus} from 'react-icons/bs'
-import logo2 from './../images/logo.png'
+
 
 
 const Cart = (props) => {
-  const {cartItems, cartValues} = props;
+  const {cartItems} = props;
   const [show, setShow] = useState(false);
-
+ 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
@@ -19,7 +18,7 @@ const Cart = (props) => {
         <button type="button" className="btn position-relative text-white" onClick={handleShow}>
         <BsCartPlus className="reactIcon" />
         <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-           {cartValues}
+           {cartItems.length}
         </span>
       </button>
       
@@ -30,7 +29,7 @@ const Cart = (props) => {
           <Modal.Title>Items Added</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {cartItems.map((i) => (
+          {cartItems.map((i, id) => (
             <div className="row">
             
             
@@ -63,7 +62,7 @@ const Cart = (props) => {
                 <button type="button" className="btn btn-outline-success">
                   -
                 </button>
-                <button type="button" className="btn btn-outline-success">
+                <button type="button" className="btn btn-outline-success" value="1">
                   1
                 </button>
                 <button type="button" className="btn btn-outline-success">
@@ -79,9 +78,8 @@ const Cart = (props) => {
 
         <Modal.Footer>
           <div>
-            <p> Total Amount: Rs.1300 </p>
-
-            <Button variant="success">Checkout</Button>
+            <p> Total Amount: Rs.0 </p>
+           <Button variant="success">Checkout</Button>
           </div>
         </Modal.Footer>
       </Modal>

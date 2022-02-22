@@ -9,16 +9,17 @@ import Cart from './Cart'
 
 
 const ItemCards = (props) => {
-  const {cartValues, setCartValues, appId, setAppId, cartItems, setCartItems} =props;
+  const {cartValues, setCartValues, appId, setAppId, cartItems, setCartItems, incrementValue} =props;
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [cartValue, setCartValue] = useState(0);
-  const value = (val) => {
+  const value = (incrementValue) => {
      
-    setCartValue(val + cartValue)
+    setCartValue(incrementValue)
     //setCartValues(val + cartValues);
 }
+console.log(cartValue)
 
   
     const [data, setData] = useState([])
@@ -30,17 +31,17 @@ const ItemCards = (props) => {
    
      useEffect(()=> {fetchData()},[])
      
-
-    const onAdd = (id) => {
-        
+     console.log(data)
+    const onAdd = (id, name) => {
+      
        const cartData = data.find(x => x.id === id); 
-      // console.log(cartData)
+      //console.log(incrementValue)
        if(cartData) {
     //        setCartItems(
     //          cartItems.map((x) => 
     //          x.id === cartData.id ? {...cartData, qty: cartData.qty+1 }: x
     //         )
-    //        );
+    //        ); 
     //    }else {
         setCartItems([...cartItems,{...cartData}])
        }
@@ -139,9 +140,9 @@ const ItemCards = (props) => {
         </div>
         
         
-        <div className='row'>
+        <div className='row p-5'>
             
-            {data.map((data) =>  <ItemCard  key= {data.id} value={value} onAdd={() => onAdd(data.id)} value={value} date = {data.createDate} id={data.id} name= {data.name} price= {data.price} stock= {data.stock} image={data.image}/> )}
+            {data.map((data) =>  <ItemCard  key= {data.id} value={incrementValue} onAdd={() => onAdd(data.id)} value={value} date = {data.createDate} id={data.id} name= {data.name} price= {data.price} stock= {data.stock} image={data.image}/> )}
             
             
         </div>
