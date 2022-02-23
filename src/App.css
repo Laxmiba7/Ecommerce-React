@@ -1,6 +1,7 @@
 .navbar {
     background-color:#323c7d;
-    height: 5rem;
+    height: auto;
+    
     
 }
 .navbar a {
@@ -9,11 +10,16 @@
     
 }
 .navbar-brand img {
-  width: 5rem;  
+  width: 6.5rem;  
+  
 }
 
-.badge {
-  border-radius: 60%;
+.navbar-nav {
+  font-size: 1.5rem; 
+}
+
+.reactIcon, .badgeIcon {
+  font-size: 2rem;
 }
 
 /* .btn-group {

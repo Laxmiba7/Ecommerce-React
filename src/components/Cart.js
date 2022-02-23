@@ -19,7 +19,7 @@ const Cart = (props) => {
     <div>
       <button
         type="button"
-        className="btn position-relative text-white"
+        className="btn position-relative text-white btn-lg "
         onClick={handleShow}
       >
         <BsCartPlus className="reactIcon" />
