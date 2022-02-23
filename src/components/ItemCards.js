@@ -5,23 +5,21 @@ import axios from 'axios'
 import { useState } from 'react'
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import Cart from './Cart'
+
 
 
 const ItemCards = (props) => {
-  const {cartValues, setCartValues, appId, setAppId, cartItems, setCartItems, incrementValue} =props;
+  const {cartValues, setCartValues, cartItems, setCartItems, incrementValue, total, setTotal} =props;
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
- // const [cartValue, setCartValue] = useState(0);
-  const value = (incrementValue) => {
-     
-    // setCartValue(incrementValue)
-    setCartValues([...cartValues,incrementValue]);
-}
-//console.log(cartValue);
-
   
+ 
+  const value = (incrementValue,price) => {
+    let priceVal = price.split('').slice(1).join('')* 120
+     setTotal(total + incrementValue*priceVal)
+     setCartValues([...cartValues,incrementValue]);
+}
     const [data, setData] = useState([])
     const fetchData = async() => {
         const res = await axios.get('https://electronic-ecommerce.herokuapp.com/api/v1/product');
@@ -35,46 +33,20 @@ const ItemCards = (props) => {
     const onAdd = (id) => {
       
        const cartData = data.find(x => x.id === id); 
-      //console.log(incrementValue)
-       if(cartData) {
-    //        setCartItems(
-    //          cartItems.map((x) => 
-    //          x.id === cartData.id ? {...cartData, qty: cartData.qty+1 }: x
-    //         )
-    //        ); 
-    //    }else {
-        setCartItems([...cartItems,{...cartData}])
+        if(cartData) {
+          setCartItems([...cartItems,{...cartData}])
        }
       
-      
-      
-    //    const exist = cartItems.find(x => x.id === id);
-    //    console.log(exist)
-      
-        // if(id === data.id) {
-        //     setCartItems([...cartItems, data ])
-        // }
-        // const exist = cartItems.find(x => x.id === data.id);
-		// console.log(exist)
-		// if(exist) {
-		// 	setCartItems(cartItems.map(x => x.id === data.id ? {...exist , qty: exist.qty+1 } : x))
-		// }
-		// else {
-			
-			
-		// 	 setCartItems([...cartItems, ])
-		// }
-
-    } 
- //console.log(cartItems)
+} 
+ 
     
   return (
     <div className='p-5'>
-        <div className='d-flex justify-content-between' >
+        <div className='d-flex justify-content-between me-5 ms-5' >
             <h5>Products</h5>
             <Button variant="primary" onClick={handleShow}>
             <AiTwotoneFilter /> Filter
-          </Button>
+           </Button>
 
           <Offcanvas show={show} onHide={handleClose} className="me-3 ">
             <Offcanvas.Header closeButton className="bg-primary text-white">

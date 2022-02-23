@@ -1,6 +1,6 @@
 // import axios from 'axios'
 import React from 'react'
-import {AiOutlineMinus, AiOutlinePlus, AiOutlineStar} from 'react-icons/ai'
+import {AiOutlineStar} from 'react-icons/ai'
 import { useState } from 'react';
 
 
@@ -11,7 +11,6 @@ const ItemCard = (props) => {
     const {name, price, stock, image, id, value, date, onAdd} = props;
     const [disable, setDisable] = React.useState(false);
     const [incrementValue, setIncrementValue] = useState(0);
-    const[idVal, setIdVal] = useState('');
     const [dis,setDis]=useState(false);
     //Convert timestamp to date
     let dateObj = new Date(date);
@@ -21,12 +20,12 @@ const ItemCard = (props) => {
     const finalDate = `${day}/${month}/${year}`
     
     //conver dollar to Rs
-    const convertedPrice = (parseInt(price.split('').slice(1).join('')) * 119.84 ).toFixed(0) ;
+    const convertedPrice = (parseInt(price.split('').slice(1).join('')) * 120 ).toFixed(0) ;
     //Put comma in between number
     convertedPrice.toString();
     let lastThree = convertedPrice.substring(convertedPrice.length-3);
     let otherNumbers = convertedPrice.substring(0,convertedPrice.length-3);
-    if(otherNumbers != '')
+    if(otherNumbers !== '')
         lastThree = ',' + lastThree;
     let res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
    
@@ -45,7 +44,7 @@ const ItemCard = (props) => {
     //Function for Add to cart disable on value 0
     const check = () => {
      incrementValue === 0 ? setDis(true) : onAdd();
-     value(incrementValue);
+     value(incrementValue,price);
     }
     
    

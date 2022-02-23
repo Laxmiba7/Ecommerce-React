@@ -3,13 +3,18 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 import { BsCartPlus } from "react-icons/bs";
+import { AiOutlineDelete } from "react-icons/ai";
 
 const Cart = (props) => {
-  const { cartItems, cartValues } = props;
+  const { cartItems,setCartItems, cartValues, total } = props;
   const [show, setShow] = useState(false);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [total, setTotal] = useState(0);
+  const handleDelete = (id) => {
+    let filteredItem = cartItems.filter((i)=>  i.id !== id )
+    setCartItems(filteredItem);
+  }
   return (
     <div>
       <button
@@ -30,8 +35,7 @@ const Cart = (props) => {
         <Modal.Body>
           {cartItems.map((i, ind) => {
             let amt = i.price.split("").slice(1).join("") * (119.84).toFixed(0);
-            
-            
+
             return (
               <div className="row">
                 <div className="col-6">
@@ -48,7 +52,6 @@ const Cart = (props) => {
                     <div className="col-7">
                       <h5>{i.name}</h5>
                       <p className="text-success">Rs.{amt * cartValues[ind]}</p>
-                      
                     </div>
                   </div>
                 </div>
@@ -63,29 +66,25 @@ const Cart = (props) => {
                     <button type="button" className="btn btn-outline-success">
                       -
                     </button>
-                    <button
-                      type="button"
-                      className="btn btn-outline-success"
-                      value="1"
-                    >
+                    <button type="button" className="btn btn-outline-success">
                       {cartValues[ind]}
                     </button>
                     <button type="button" className="btn btn-outline-success">
                       +
                     </button>
                   </div>
+                  <button type="button" className="btn btn-danger ms-5" onClick={()=>handleDelete(i.id)}>
+                    <AiOutlineDelete />
+                  </button>
                 </div>
               </div>
             );
-            
           })}
         </Modal.Body>
-        
 
         <Modal.Footer>
           <div>
-            <p> Total Amount: 0 </p>
-            <Button variant="danger me-2">Remove</Button>
+            <p> Total Amount: {total} </p>
             <Button variant="success">Checkout</Button>
           </div>
         </Modal.Footer>
