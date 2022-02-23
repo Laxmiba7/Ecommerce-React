@@ -1,8 +1,6 @@
 .navbar {
     background-color:#323c7d;
     height: auto;
-    
-    
 }
 .navbar a {
     color: #FFFFFF;
@@ -11,14 +9,13 @@
 }
 .navbar-brand img {
   width: 6.5rem;  
-  
 }
 
 .navbar-nav {
   font-size: 1.5rem; 
 }
 
-.reactIcon, .badgeIcon {
+.reactIcon,.badgeIcon {
   font-size: 2rem;
 }
 

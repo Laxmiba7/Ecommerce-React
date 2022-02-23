@@ -119,7 +119,7 @@ const find =() => {
         </div>
         
         
-        <div className='row p-5'>
+        <div className='row p-5 mb-3'>
             
             {data.map((data) =>  <ItemCard  key= {data.id} value={incrementValue} onAdd={() => onAdd(data.id)} value={value} date = {data.createDate} id={data.id} name= {data.name} price= {data.price} stock= {data.stock} image={data.image}/> )}
             
