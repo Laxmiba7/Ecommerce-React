@@ -39,6 +39,9 @@ const ItemCards = (props) => {
       
 } 
  
+const find =() => {
+  
+}
     
   return (
     <div className='p-5'>
@@ -56,7 +59,7 @@ const ItemCards = (props) => {
               <div className="Form">
                 <form>
                   <div>
-                    <label for="Price">Price</label> <br />
+                    <label htmlFor="Price">Price</label> <br />
                     <div className="row">
                       <div className="col-6">
                         <input
@@ -82,7 +85,7 @@ const ItemCards = (props) => {
                   <br />
 
                   <div className="mb-3">
-                    <label for="exampleInputDate1" className="form-label">
+                    <label htmlFor="exampleInputDate1" className="form-label">
                       Date
                     </label>
                     <input
@@ -97,7 +100,7 @@ const ItemCards = (props) => {
                   <br />
 
                   <div className="mb-3">
-                    <label for="category" className="form-label">
+                    <label htmlFor="category" className="form-label">
                       Category
                     </label>
                     <select id="category" className="form-select">
@@ -105,8 +108,12 @@ const ItemCards = (props) => {
                     </select>
                   </div>
                 </form>
+                
               </div>
             </Offcanvas.Body>
+            <div className='d-md-flex justify-content-md-end'>
+                <button type='submit' className='btn btn-primary btn-lg m-5' onClick={()=> {find()}}>Search</button>
+                </div>
           </Offcanvas>
             
         </div>
