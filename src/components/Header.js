@@ -6,7 +6,7 @@ import Cart from './Cart'
 
 
 const Header = (props) => {
- const {cartValues, cartItems,setCartItems, value,total} = props
+ const {cartValues, cartItems,setCartItems, value,total, setTotal} = props
  return (
  <nav className="navbar navbar-expand-lg sticky-top">
   <div className="container-fluid">
@@ -21,7 +21,7 @@ const Header = (props) => {
         <a className="nav-link active m-2" aria-current="page" href="#">Home</a>
         <button type="button" className="btn text-white position-relative">
         
-        <Cart value={value} cartItems={cartItems} cartValues={cartValues} setCartItems ={setCartItems} total={total}/> 
+        <Cart value={value} setTotal = {setTotal} cartItems={cartItems} cartValues={cartValues} setCartItems ={setCartItems} total={total}/> 
         
         </button>
         

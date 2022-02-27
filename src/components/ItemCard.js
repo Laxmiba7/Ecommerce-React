@@ -45,6 +45,7 @@ const ItemCard = (props) => {
     const check = () => {
      incrementValue === 0 ? setDis(true) : onAdd();
      value(incrementValue,price);
+    // setIncrementValue(0)
     }
     
    

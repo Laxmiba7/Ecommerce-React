@@ -6,15 +6,22 @@ import { BsCartPlus } from "react-icons/bs";
 import { AiOutlineDelete } from "react-icons/ai";
 
 const Cart = (props) => {
-  const { cartItems,setCartItems, cartValues, total } = props;
+  const { cartItems,setCartItems, cartValues, total, setTotal } = props;
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleDelete = (id) => {
+  const handleDelete = (id,price,qty) => {
+    let convert = (parseInt(price.split('').slice(1).join('')) * 120 ).toFixed(0) ;
     let filteredItem = cartItems.filter((i)=>  i.id !== id )
     setCartItems(filteredItem);
+    setTotal(total - convert * qty) 
+    if(cartItems.length === 1) {
+      setTotal(0)
+    }
+    console.log(qty)
   }
+  // console.log(total)
   return (
     <div>
       <button
@@ -73,7 +80,7 @@ const Cart = (props) => {
                       +
                     </button>
                   </div>
-                  <button type="button" className="btn btn-danger ms-5" onClick={()=>handleDelete(i.id)}>
+                  <button type="button" className="btn btn-danger ms-5" onClick={()=>handleDelete(i.id, i.price,cartValues[i.id-1] )}>
                     <AiOutlineDelete />
                   </button>
                 </div>

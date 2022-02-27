@@ -15,7 +15,7 @@ function App() {
 	
 	return (
 		<div>
-		  <Header  cartItems = {cartItems} setCartItems= {setCartItems} cartValues={cartValues} total={total}/>
+		  <Header  setTotal = {setTotal} cartItems = {cartItems} setCartItems= {setCartItems} cartValues={cartValues} total={total}/>
 		  <ItemCards cartItems = {cartItems} setCartItems= {setCartItems}  cartValues= {cartValues} setCartValues={setCartValues} total={total} setTotal={setTotal} />
 		 
 		 
