@@ -17,7 +17,7 @@ const ItemCard = (props) => {
     let month = dateObj.getMonth() ;
     let year = dateObj.getFullYear();
     let day = dateObj.getDate();
-    const finalDate = `${day}/${month}/${year}`
+    const finalDate = `${month}/${day}/${year}`
     
     //conver dollar to Rs
     const convertedPrice = (parseInt(price.split('').slice(1).join('')) * 120 ).toFixed(0) ;

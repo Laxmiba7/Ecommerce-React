@@ -53,10 +53,19 @@ const {values, handleChange, handleSubmit} = useFormik({
   },
   onSubmit: values => {
     //console.log(typeof(values.minPrice),'values')
-    //console.log(data.category[1])
+    
    
    
-      let searchedItem = data.filter((i) => ((parseInt(i.price.split('').slice(1).join(''))  >= values.minPrice && parseInt(i.price.split('').slice(1).join('')) <= values.maxPrice)))
+      let searchedItem = data.filter((i) => {
+        
+        
+        return (
+        parseInt(i.price.split('').slice(1).join(''))  >= values.minPrice && 
+        parseInt(i.price.split('').slice(1).join('')) <= values.maxPrice && 
+        i.category[1] === values.category 
+        
+      )
+    });
       
       setData(searchedItem);
       setShow(false);
@@ -137,12 +146,12 @@ const {values, handleChange, handleSubmit} = useFormik({
                     <select id="category" className="form-select" onChange={handleChange}
                           value={values.category}>
                       <option>Select Options</option>
-                      <option>Mobile</option>
-                      <option>Laptop</option>
-                      <option>Keyboard</option>
-                      <option>Watch</option>
-                      <option>Monitor</option>
-                      <option>Headset</option>
+                      <option>mobile</option>
+                      <option>laptop</option>
+                      <option>keyboard</option>
+                      <option>watch</option>
+                      <option>monitor</option>
+                      <option>headset</option>
                     </select>
                   </div>
                   <div className='d-md-flex justify-content-md-end'>
